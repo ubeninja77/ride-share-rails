@@ -16,8 +16,8 @@ class DriversController < ApplicationController
     @driver = Driver.new
   end
 
-  def create
-    @driver = Driver.new(driver_params) 
+  def create # Set the availability status to true by default
+    @driver = Driver.new(driver_params.merge(:available => 'true')) 
 
     if @driver.save 
       redirect_to driver_path(@driver.id)
