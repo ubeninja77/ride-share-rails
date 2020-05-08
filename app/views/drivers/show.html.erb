@@ -1,0 +1,9 @@
+<h2><%= @driver.name%></h2>
+<p>VIN: <%= @driver.vin %></p>
+<% if @driver.available == 'true'%>
+  <p>Available</p>
+<% else %>
+  <p> Not available </p>
+<% end %>
+
+<%= link_to "All Drivers", drivers_path %>

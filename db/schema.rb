@@ -39,5 +39,4 @@ ActiveRecord::Schema.define(version: 2020_05_07_220202) do
     t.bigint "driver_id"
     t.bigint "passenger_id"
   end
-
 end
