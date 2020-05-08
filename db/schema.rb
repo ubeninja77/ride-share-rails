@@ -16,20 +16,16 @@ ActiveRecord::Schema.define(version: 2020_05_07_220202) do
   enable_extension "plpgsql"
 
   create_table "drivers", force: :cascade do |t|
-    t.string "integer"
     t.string "name"
     t.string "vin"
     t.string "available"
-    t.string "boolean"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "passengers", force: :cascade do |t|
-    t.string "integer"
     t.string "name"
     t.string "phone_num"
-    t.string "string"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -42,8 +38,6 @@ ActiveRecord::Schema.define(version: 2020_05_07_220202) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "driver_id"
     t.bigint "passenger_id"
-    t.index ["driver_id"], name: "index_trips_on_driver_id"
-    t.index ["passenger_id"], name: "index_trips_on_passenger_id"
   end
 
 end
