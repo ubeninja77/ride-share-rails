@@ -1,3 +1,14 @@
-<h4>DRIVERS</h4>
+<%= link_to "Create new Driver Account", new_driver_path %>
 
-
+<h1>All drivers</h1>
+<% if @drivers.length > 0 %>
+  <ul>
+    <% @drivers.each do |driver|  %>
+      <li>
+        <header><strong><%= link_to(driver.name, driver_path(driver.id) ) %></strong></header>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <h3>No drivers in the system!</h3>
+<% end %>
