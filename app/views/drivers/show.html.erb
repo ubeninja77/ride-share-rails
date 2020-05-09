@@ -9,4 +9,21 @@
 </p>
 <p><%= link_to "Edit Driver's Info", edit_driver_path(@driver) %></p>
 <p><%= link_to "Delete Driver", driver_path(@driver), method:  :delete, data: {confirm: "Are you sure you want to delete this driver?"} %></p>
-<%= link_to "All Drivers", drivers_path %>
+<h2>Trips</h2>
+<tr>
+  <th>#</th>
+  <th>Date</th>
+  <th>Rating</th>
+  <th>Earnings</th>
+</tr>
+<tr>
+  <ol>
+    <% @driver.trips.each do |trip| %>
+      <li>
+        <%= link_to trip.date, trip_path(trip.id) %>
+        <%= trip.rating %>
+        <%= trip.cost %>
+      </li>
+    <% end %>
+  </ol>
+</tr>

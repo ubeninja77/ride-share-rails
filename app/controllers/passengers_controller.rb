@@ -35,7 +35,7 @@ class PassengersController < ApplicationController
       return
     else
       passenger.destroy
-      redirect_to root_path
+      redirect_to passengers_path
       return
     end
   end
@@ -44,7 +44,7 @@ class PassengersController < ApplicationController
     @passenger = Passenger.find_by(id: params[:id])
 
     if @passenger.nil?
-      redirect_to root_path
+      redirect_to passengers_path
       return
     end
   end
