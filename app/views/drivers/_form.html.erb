@@ -1,0 +1,22 @@
+<%= form_with model: @driver, class: 'create-driver' do |f| %>
+  <p>Please provide the following information to <%= action_name%> the driver's information:</p>
+
+  <% if @driver.errors.any? %>
+    <ul class="errors">
+      <% @driver.errors.each do |column, message| %>
+        <li>
+          <strong><%= column.capitalize %> <%= message %> </strong>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :vin %>
+    <%= f.text_field :vin %>
+    <%= f.submit "#{action_name} Driver", class: "driver-button" %>
+  </div>
+
+<% end %>

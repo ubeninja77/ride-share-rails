@@ -1,6 +1,6 @@
 class DriversController < ApplicationController
   def index
-    @drivers = Driver.all
+    @drivers = Driver.all.order("created_at") # maintains order 
   end
 
   def show
@@ -23,7 +23,7 @@ class DriversController < ApplicationController
       redirect_to driver_path(@driver.id)
       return
     else 
-      render :new, :bad_request
+      render :new
       return
     end
   end
