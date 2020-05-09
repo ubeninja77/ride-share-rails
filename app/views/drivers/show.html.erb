@@ -27,3 +27,5 @@
     <% end %>
   </ol>
 </tr>
+ <h2>Driver's Rating: <%= @driver.calculate_rating.nil? ? "No rating data": @driver.calculate_rating.round(1) %>
+ <h2>Driver's Earnings: <%= @driver.total_earnings.nil? ? "0": number_to_currency(@driver.total_earnings) %>
