@@ -1,0 +1,13 @@
+<main>
+<h1>Passenger: <%= @passenger.name %></h1>
+<h2>Phone Number: <%= @passenger.phone_num %></h2>
+<h2>Total Charges: <%= @passenger.total_charges %></h2>
+
+
+<%= link_to "edit", edit_passenger_path(@passenger.id) %>
+<%= link_to "delete", passenger_path(@passenger.id), method: :delete %>
+<%= link_to "add trip", new_trip_path(@passenger.id), method: :post %>
+
+<%= render :partial => "shared/triptable", :locals => { :object => @passenger } %>
+
+</main>

@@ -4,7 +4,6 @@ class Passenger < ApplicationRecord
   has_many :trips
 
 
-
   def total_paid
     total = 0
     self.trips.each do |trip|
