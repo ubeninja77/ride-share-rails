@@ -9,23 +9,22 @@
 </p>
 <p><%= link_to "Edit Driver's Info", edit_driver_path(@driver) %></p>
 <p><%= link_to "Delete Driver", driver_path(@driver), method:  :delete, data: {confirm: "Are you sure you want to delete this driver?"} %></p>
-<h2>Trips</h2>
+<h2>Trips List</h2>
+<table>
 <tr>
-  <th>#</th>
+  <th>Trip #</th>
   <th>Date</th>
-  <th>Rating</th>
   <th>Earnings</th>
+  <th>Rating</th>
 </tr>
+<% @driver.trips.each do |trip| %>
 <tr>
-  <ol>
-    <% @driver.trips.each do |trip| %>
-      <li>
-        <%= link_to trip.date, trip_path(trip.id) %>
-        <%= trip.rating %>
-        <%= trip.cost %>
-      </li>
-    <% end %>
-  </ol>
+  <td><%= link_to trip.id, trip_path(trip.id) %></td>
+  <td><%= link_to trip.date, trip_path(trip.id) %></td>
+  <td><%= number_to_currency(trip.transform_to_dollars) %></td>
+  <td><%= trip.rating %></td>
+<% end %>
+<table>
 </tr>
  <h2>Average Rating: <%= @driver.calculate_rating.nil? ? "No rating data": @driver.calculate_rating.round(1) %>
  <h2>Total Earnings: <%= @driver.total_earnings.nil? ? "0": number_to_currency(@driver.total_earnings) %>
