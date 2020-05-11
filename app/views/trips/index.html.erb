@@ -1,0 +1,22 @@
+<h1>Trips List</h1>
+<tr>
+  <th>#</th>
+  <th>Date</th>
+  <th>Cost</th>
+  <th>Rating</th>
+  <th>Driver</th>
+  <th>Passenger</th>
+</tr>
+<tr>
+  <ol>
+    <% @trips.each do |trip| %>
+      <li>
+        <%= link_to trip.date, trip_path(trip.id) %>
+        <%= trip.driver.name %>
+        <%= trip.passenger.name %>
+        <%= number_to_currency(trip.transform_to_dollars) %>
+        <%= trip.rating %>
+      </li>
+    <% end %>
+  </ol>
+</tr>
