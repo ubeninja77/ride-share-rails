@@ -1,0 +1,24 @@
+<main>
+  <h1 class="list-h1">List of all Passengers</h1>
+
+  <section id="passengers-trips-list">
+    <table>
+      <tr class='table-header'>
+        <td>NAME</td>
+        <td>PHONE NUMBER</td>
+        <td>TOTAL CHARGES</td>
+        <td>EDIT</td>
+        <td>DELETE</td>
+      </tr>
+      <% Passenger.each do |passenger| %>
+          <ul>
+            <td><%= link_to passenger.name, passenger_path(passenger.id) %></td>
+            <td><%= passenger.phone_num %> </td>
+            <td>$<%= sprintf("%.2f", passenger.total_paid) %></td>
+            <td><%= link_to "Edit", edit_passenger_path(passenger.id), class: "edit-link" %></td>
+            <td><%= link_to "Delete", passenger_path(passenger.id), method: :delete, data: { confirm: "Verifying you want to delete." }, class: "delete-link" %></td>
+          </ul>
+      <% end %>
+    </table>
+  </section>
+</main> 
