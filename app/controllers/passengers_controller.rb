@@ -55,12 +55,11 @@ class PassengersController < ApplicationController
     if @passenger.nil?
       head :not_found
       return
-    end
-
-    if @passenger.update(passenger_params)
+    elsif @passenger.update(passenger_params)
       redirect_to passengers_path(@passenger.id)
+      return
     else
-      render "edit"
+      render :edit
     end
   end
 
@@ -71,8 +70,5 @@ class PassengersController < ApplicationController
       trip.save
     end
   end
-
-
-
 
 end
