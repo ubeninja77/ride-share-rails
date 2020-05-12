@@ -30,8 +30,9 @@ class TripsController < ApplicationController
   end
 
   def create
-    puts "create"
     @trip = Trip.new(trip_params.merge(:rating => nil)) 
+    @trip.driver.update_availability
+    @trip.driver.save
 
     if @trip.save 
       redirect_to trip_path(@trip.id)
@@ -58,11 +59,25 @@ class TripsController < ApplicationController
       redirect_to trips_path
       return
     elsif @trip.update(trip_params)
-      redirect_to trip_path(@trip.id) 
+      redirect_to trip_path(@trip.id)
+      @trip.driver.update_availability
+      @trip.driver.save   
       return
     else 
       render :edit 
       return
+    end
+  end
+
+  def destroy
+    @trip = Trip.find_by(id: params[:id])
+
+    if @trip.nil?
+      redirect_to trips_path
+      return
+    else
+      @trip.destroy
+      redirect_to passenger_trips_path(@trip.passenger_id)
     end
   end
 

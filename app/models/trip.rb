@@ -3,17 +3,8 @@ class Trip < ApplicationRecord
   belongs_to :passenger
 
   def self.assign_driver
-    Driver.all.each do |driver|
-      if driver.available == 'true'
-        driver.available = 'false'
-        return driver
-      end
-    end
-  end
-
-  def calculate_cost
-    # trip cost in dollars
-    return rand(500..19999)
+    driver = Driver.where(available: 'true').first
+    return driver
   end
 
   def self.create_new(passenger)
@@ -23,5 +14,10 @@ class Trip < ApplicationRecord
     trip.driver_id = self.assign_driver.id
     trip.passenger = passenger
     return trip
+  end
+
+  def calculate_cost
+    # trip cost in dollars
+    return rand(500..19999)
   end
 end

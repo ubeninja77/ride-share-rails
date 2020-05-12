@@ -27,5 +27,13 @@ class Driver < ApplicationRecord
     end
     return earnings
   end
+
+  def update_availability
+    if self.available == 'false'
+      self.available = 'true'
+    else
+      self.available = 'false'
+    end
+  end
 end
 

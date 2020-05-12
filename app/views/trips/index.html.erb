@@ -19,4 +19,6 @@
     <% end %>
 </tr>
 <table>
-<p><%= link_to "Create a new trip for this passenger", new_passenger_trip_path %></p>
+<% if @passenger %>
+  <p><%= link_to "Create a new trip for this passenger", new_passenger_trip_path %></p>
+<% end %>
