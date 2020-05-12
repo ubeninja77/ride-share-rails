@@ -20,10 +20,10 @@ class PassengersController < ApplicationController
 
     if @passenger.save
       redirect_to passenger_path(@passenger.id)
-      return
+      # return
     else
       render new_passenger_path
-      return
+      # return
     end
   end
 
@@ -44,19 +44,20 @@ class PassengersController < ApplicationController
     @passenger = Passenger.find_by(id: params[:id])
 
     if @passenger.nil?
-      redirect_to passengers_path 
+      head :not_found
       return
     end
   end
 
   def update
-    @passenger = Passenger.find_by(id: params[:id])
-
+    @passenger = Passenger.find_by(id: params[:id] )
     if @passenger.nil?
-      redirect_to passengers_path 
+      head :not_found
       return
-    elsif @passenger.update(passenger_params)
-      redirect_to passenger_path
+    end
+
+    if @passenger.update(passenger_params)
+      redirect_to passenger_path(@passenger.id)
       return
     else
       redirect_to edit_passenger_path
@@ -72,9 +73,9 @@ class PassengersController < ApplicationController
     end
   end
 
-  # private
-  # def passenger_params
-  #   params.require(:passenger).permit(:name, :phone_num)
-
+  private
+  def passenger_params
+    params.require(:passenger).permit(:name, :phone_num)
+  end
 
 end
