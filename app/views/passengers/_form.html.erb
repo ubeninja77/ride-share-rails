@@ -1,4 +1,5 @@
-<% if @passenger.errors.any? %>
+ <% if @passenger.errors.any? %>
+ 
   <ul class="errors">
     <% @passenger.errors.each do |column, message| %>
       <li>
@@ -8,14 +9,16 @@
   </ul>
 <% end %>
 
+<p>Please provide the following information to <%= verb_name %> a passenger:</p>
 
-<%= form_with model: @passenger, class: passenger_form_class do |f| %>
-<div>
-  <%= f.label :passenger_name %>
-  <%= f.text_field :name %>
-  <%= f.label :phone_number %>
-  <%= f.text_field :phone_num %>
-</div>
-  <%= f.submit submit_button_label, class: "form-button" %>
+<%= form_with model: @passenger, class: 'create-passenger' do |f| %>
+
+<%= f.label :name, "Name: " %>
+<%= f.text_field :name %>
+
+<%= f.label :phone_num, "Phone Number: " %>
+<%= f.text_field :phone_num %>
+
+<%= f.submit "Save Passenger", class: "passenger-save" %>
 
 <% end %>
