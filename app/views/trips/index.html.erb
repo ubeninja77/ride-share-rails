@@ -1,4 +1,4 @@
-<h1><%= @passenger.name %>'s Trips List</h1>
+<h1>Trips List</h1>
 <table>
 <tr>
   <th>#</th>
@@ -14,7 +14,7 @@
   <td><%= link_to trip.date, trip_path(trip.id) %></td>
   <td><%= trip.driver.name %></td>
   <td><%= trip.passenger.name %></td>
-  <td><%= number_to_currency(trip.transform_to_dollars) %></td>
+  <td><%= number_to_currency(trip.cost.to_f/100) %></td>
   <td><%= trip.rating %></td>
     <% end %>
 </tr>
