@@ -1,5 +1,19 @@
 <main>
-  <%# <h1>Add New Passenger</h1>
-  <%= render partial: "form", locals: { submit_button_label: "Create Passenger", passengers_form: "new-passenger-form" } %> %>
+  <p>Please fill out the following information to add a new passenger.</p>
+ 
+
+<%= form_with model: @passenger do |f| %>
+
+<%= f.label :Name %>
+<%= f.text_field :name %>
+
+<%= f.label :Phone_number %>
+<%= f.text_field :phone_number %>
+
+<%= f.submit "Create a new passenger" %>
+
+<% end %>
+
+<%# <%= render partial: "form", locals: { submit_button_label: "Create Passenger", passengers_form: "new-passenger-form" } %> 
 
 </main> 

@@ -1,29 +1,32 @@
 <main>
 <h1>Passenger: <%= @passenger.name %></h1>
-<h2>Phone Number: <%= @passenger.phone_num %></h2>
-<h2>Total Charges: <%= @passenger.total_charges %></h2>
+<h3>Phone Number: <%= @passenger.phone_num %></h3>
+<h3>Total Charges: $<%= @passenger.total_paid %></h3>
 
 
-<%= link_to "edit", edit_passenger_path(@passenger.id) %>
-<%= link_to "delete", passenger_path(@passenger.id), method: :delete %>
-<%= link_to "add trip", new_trip_path(@passenger.id), method: :post %>
-<div>TRIP ID</div>
+<%# <%= link_to "edit", edit_passenger_path(@passenger.id) %>
+<%# <%= link_to "delete", passenger_path(@passenger.id), method: :delete %> 
+<%# <%= link_to "add trip", new_trip_path(@passenger.id), method: :post %> 
+<%# <div>ID</div>
 <div>DATE</div>
 <div>DRIVER</div>
 <div>RATING</div>
 <div>COST</div>
 <div>EDIT</div>
-<div>DELETE</div>
-<% @passenger.trips.each do |trip| %>
-<div><%= trip.id %></div>
-<div><%= trip.date %></div>
-<div><%= trip.driver.name %></div>
-<div><%= trip.rating %></div>
-<div>$<%= trip.cost%></div>
-<div><%= link_to "Edit Trip Rating", edit_trip_path(trip.id) %></div>
-<div><%= link_to "Delete Trip", trip_path(trip.id), method: :delete, data: {confirm: "Are you sure?"}%></div>
-<% end %>
-</div>
-<%# <%= render :partial => "shared/triptable", :locals => { :object => @passenger } %> %>
-
+<div>DELETE</div> %>
+<body>
+  <% @passenger.trips.each do |trip| %>
+  <div>Trip ID: <%= trip.id %></div>
+  <%# <div> <%= link_to trip.id, trip_path(trip.id) %></div> 
+  <div>Trip Date: <%= trip.date %></div>
+  <div><%= trip.driver.name %></div>
+  <div>Trip Rating: <%= trip.rating %></div>
+  <div>Trip Cost: $<%= trip.cost%></div>
+  <div><%= link_to "Edit Trip Rating", edit_trip_path(trip.id) %></div>
+  <div><%= link_to "Delete Trip", trip_path(trip.id), method: :delete, data: {confirm: "Are you sure?"}%></div>
+  <div><%= link_to "Create a New Trip", new_trip_path(@passenger.id), method: :delete %> </div.>
+  <% end %>
+  </div>
+  <%# <%= render :partial => "shared/triptable", :locals => { :object => @passenger } %> 
+</body>
 </main>
