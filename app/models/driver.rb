@@ -2,7 +2,7 @@ class Driver < ApplicationRecord
   has_many :trips
   validates :name, presence: true
   # VIN is composed of 17 characters (digits and capital letters)
-  validates :vin, presence: true, format: {with: /\A[A-Z0-9]{17}\z/, message: "only allows 17 capital letters or numbers"}
+  validates :vin, presence: true
 
   def calculate_rating
     trips_with_rating = self.trips.where.not(rating: nil)
@@ -26,6 +26,14 @@ class Driver < ApplicationRecord
       earnings += (trip.cost.to_i - 165) * 0.8 / 100
     end
     return earnings
+  end
+
+  def update_availability
+    if self.available == 'false'
+      self.available = 'true'
+    else
+      self.available = 'false'
+    end
   end
 end
 

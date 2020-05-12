@@ -1,0 +1,26 @@
+<%= form_with model: @trip, class: 'create-trip' do |f| %>
+  <p>Please provide the following information to <%= action_name%> the trip's information:</p>
+
+  <% if @trip.errors.any? %>
+    <ul class="errors">
+      <% @trip.errors.each do |column, message| %>
+        <li>
+          <strong><%= column.capitalize %> <%= message %> </strong>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div>
+    <% trip = @trip %>
+    <p>Trip date: <%= trip.date %></p>
+    <p>Driver: <%= trip.driver.name %></p>
+    <p>Passenger: <%= trip.passenger.name %></p>
+    <% cost = trip.cost %>
+    <p>Trip cost: <%= number_to_currency(trip.cost.to_f/100) %></p>
+    <%= f.label :rating %>
+    <%= f.select :rating, (1..5) %>
+    <%= f.submit "Complete Trip", class: "trip-button" %>
+  </div>
+
+<% end %>
