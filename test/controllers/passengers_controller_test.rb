@@ -4,6 +4,7 @@ describe PassengersController do
   describe "index" do
     get passengers_path
     must_respond_with :success
+    
   end
 
   describe "show" do
