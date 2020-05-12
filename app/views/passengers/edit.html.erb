@@ -1,17 +1,2 @@
-<main>
- <p>Please fill out the following information to edit a new passenger.</p>
- 
 
-<%= form_with model: @passenger do |f| %>
-
-<%= f.label :Name %>
-<%= f.text_field :name %>
-
-<%= f.label :Phone_number %>
-<%= f.text_field :phone_number %>
-
-<%= f.submit "Edit passenger" %>
-
-<% end %>
-  <%# <%= render partial: "form", locals: { submit_button_label: "Edit Passenger", passenger_form: "edit-passenger-form" } %> 
-</main>
+<%= render(partial: "form", locals: { action_name: "Edit", verb_name: "update" }) %>
