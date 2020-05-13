@@ -73,7 +73,7 @@ class TripsController < ApplicationController
       return
     else
       @trip.destroy
-      redirect_to passenger_trips_path(@trip.passenger_id)
+      redirect_to passenger_path(@trip.passenger_id)
     end
   end
 

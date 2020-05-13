@@ -27,7 +27,7 @@
   <% @passenger.trips.each do |trip| %>
   <tr>
     <td><%= trip.id %></td>
-    <td><%= trip.date %></td>
+    <td><%= link_to trip.date, trip_path(trip.id) %></td>
     <td> <%= trip.driver.name %></td>
     <td><%= trip.rating %></td>
     <td><%= trip.cost%></td>
@@ -37,3 +37,6 @@
     <li><%= link_to "Delete Trip", trip_path(trip.id), method: :delete, data: {confirm: "Are you sure?"}%></li>
   <% end %>
 </section>
+<% if @passenger %>
+  <p><%= link_to "Create a new trip for this passenger", new_passenger_trip_path(@passenger) %></p>
+<% end %>

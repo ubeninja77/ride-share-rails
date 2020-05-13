@@ -1,4 +1,4 @@
-<h1>Trips List</h1>
+<h1><%= "#{@passenger.name}'s Trips List"%></h1>
 <table>
 <tr>
   <th>#</th>
@@ -19,6 +19,3 @@
     <% end %>
 </tr>
 <table>
-<% if @passenger %>
-  <p><%= link_to "Create a new trip for this passenger", new_passenger_trip_path %></p>
-<% end %>
