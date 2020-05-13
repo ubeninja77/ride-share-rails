@@ -1,24 +1,27 @@
 <main>
-<h1>Passenger: <%= @passenger.name %></h1>
+<%# <header class="show-header"> %>
+<section class="show-header">
+<h2>Passenger: <%= @passenger.name %></h2>
 <p>Phone Number: <%= @passenger.phone_num %></p>
 <p>Total Charges: $<%= @passenger.total_paid %></p>
 <p><%= link_to "Edit Passenger", edit_passenger_path %></p>
 <p><%= link_to "Delete Passenger", passenger_path(@passenger), method: :delete, data: {confirm: "Are you sure?"}%></p>
-
+<p><%= link_to "Add New Trip", passenger_trips_path(@passenger.id), method: :post %></p>
+</section>
 
 <body>
+  <ul class=passenger-heading>
   <% @passenger.trips.each do |trip| %>
-  <div>Trip ID: <%= trip.id %></div>
-  <%# <div> <%= link_to trip.id, trip_path(trip.id) %></div> 
-  <div>Trip Date: <%= trip.date %></div>
-  <div>Driver: <%= trip.driver.name %></div>
-  <div>Trip Rating: <%= trip.rating %></div>
-  <div>Trip Cost: $<%= trip.cost%></div>
-  <div><%= link_to "Edit Trip Rating", edit_trip_path(trip.id) %></div>
-  <div><%= link_to "Delete Trip", trip_path(trip.id), method: :delete, data: {confirm: "Are you sure?"}%></div>
-  <div><%= link_to "Create a New Trip", new_trip_path(@passenger.id), method: :delete %> </div.>
+  <li>Trip ID: <%= trip.id %></li>
+  <li>Trip Date: <%= trip.date %></li>
+  <li>Driver: <%= trip.driver.name %></li>
+  <li>Trip Rating: <%= trip.rating %></li>
+  <li>Trip Cost: $<%= trip.cost%></li>
+
+  <li><%= link_to "Edit Trip Rating", edit_trip_path(trip.id) %></li>
+  <li><%= link_to "Delete Trip", trip_path(trip.id), method: :delete, data: {confirm: "Are you sure?"}%></li>
   <% end %>
-  </div>
+  </ul>
   
 </body>
 </main>
