@@ -5,6 +5,7 @@ class PassengersController < ApplicationController
 
   def show
     @passenger = Passenger.find_by(id: params[:id])
+    
     if @passenger.nil?
     head :not_found 
     return
@@ -51,6 +52,7 @@ class PassengersController < ApplicationController
 
   def update
     @passenger = Passenger.find_by(id: params[:id] )
+
     if @passenger.nil?
       head :not_found
       return
