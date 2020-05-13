@@ -1,13 +1,9 @@
 class TripsController < ApplicationController
   def index
     if params[:passenger_id]
-      # This is the nested route, /passenger/:passenger_id/trips
       @passenger = Passenger.find_by(id: params[:passenger_id])
       @trips = @passenger.trips
-    # elsif params[:passenger_id].nil?
-    #   redirect_to trips_path
     else
-      # This is the 'regular' route, /trips
       @trips = Trip.all
     end
   end
@@ -38,7 +34,7 @@ class TripsController < ApplicationController
       redirect_to trip_path(@trip.id)
       return
     else 
-      render :new
+      render :new, status: :not_found
       return
     end
   end
@@ -59,9 +55,9 @@ class TripsController < ApplicationController
       redirect_to trips_path
       return
     elsif @trip.update(trip_params)
-      redirect_to trip_path(@trip.id)
       @trip.driver.update_availability
-      @trip.driver.save   
+      driver_save_result = @trip.driver.save   
+      redirect_to trip_path(@trip.id)
       return
     else 
       render :edit 
