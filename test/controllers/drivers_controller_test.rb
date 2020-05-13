@@ -6,6 +6,11 @@ describe DriversController do
     Driver.create name: "Test Smith", vin: "ADADEVELOPERSACAD",
     available: "true"
   }
+  before (:each) {
+    Trip.delete_all
+    Passenger.delete_all
+    Driver.delete_all
+  }
 
   describe "index" do
     it "responds with success when there are many drivers saved" do
@@ -101,7 +106,6 @@ describe DriversController do
       }
       # Act-Assert
       # Ensure that there is no change in Driver.count
-      driver1 = post drivers_path, params: driver_hash
       expect {
         post drivers_path, params: driver_hash
       }.must_differ "Driver.count", 0
@@ -227,7 +231,7 @@ describe DriversController do
       must_redirect_to drivers_path
     end
 
-    it "does not change the db when the driver does not exist, then responds with " do
+    it "does not change the db when the driver does not exist, then responds with redirect" do
       # Arrange
       # Ensure there is an invalid id that points to no driver
       invalid_id = -1
