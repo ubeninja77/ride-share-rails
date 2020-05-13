@@ -113,7 +113,7 @@ describe TripsController do
       # Assert
       # Check that the controller redirects
       expect(absent).must_be_nil
-      must_redirect_to passenger_trips_path(trip.passenger_id)
+      must_redirect_to passenger_path(trip.passenger_id)
     end
 
     it "does not change the db when the trip does not exist, then responds with redirect" do

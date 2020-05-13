@@ -14,7 +14,7 @@ describe PassengersController do
     get passengers_path
 
     # Assert
-    expect(Passenger.count).must_equal 1
+    must_respond_with :success
     end
     
     it "responds with success when there are no passengers are saved" do
@@ -25,7 +25,6 @@ describe PassengersController do
 
       # Assert
       must_respond_with :success
-      expect(Passenger.count).must_equal 0
     end
   end
 
