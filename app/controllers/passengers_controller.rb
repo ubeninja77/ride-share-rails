@@ -67,14 +67,6 @@ class PassengersController < ApplicationController
     end
   end
 
-  def update_trips
-    @trips = Trip.where(passenger_id: @passenger.id)
-    @trips.each do |trip|
-      trip.passenger_id = 0
-      trip.save
-    end
-  end
-
   private
   def passenger_params
     params.require(:passenger).permit(:name, :phone_num)
