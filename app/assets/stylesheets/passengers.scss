@@ -17,12 +17,9 @@
 }
 
 .passenger-heading {
-  display: flex;
-  justify-content: flex;
-  // align-items: center;
-  font-size: 1em;
-  padding-bottom: 1em;
-  padding-left: 1em;
+  height: 5em;
+  overflow-x: auto;
+  margin-top: 0px;
 }
 
 .passenger-details {
