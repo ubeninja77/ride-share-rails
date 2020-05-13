@@ -1,5 +1,17 @@
 <h2>New trip</h2>
 <% trip = @trip %>
+
+<%= form_with model: @passenger do |f| %>
+
+
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<%= f.label :phone_num %>
+<%= f.text_field :phone_num %>
+
+<%= f.submit "create a new passener" %>
+
 <p>Trip date: <%= trip.date %></p>
 <p>Driver: <%= trip.driver.name %></p>
 <p>Passenger: <%= trip.passenger.name %></p>
