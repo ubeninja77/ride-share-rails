@@ -1,14 +1,30 @@
 require "test_helper"
 
 describe PassengersController do
+
   describe "index" do
-    get passengers_path
-    must_respond_with :success
+    # Arrange
+    it "responds with succcess when a passenger is saved" do
+      Passenger.create(name: "Chris Shepherd", phone_num: "4088316377")
     
+    # Act
+    get passengers_path
+    expect(Passenger.count).must_equal 1
+    end
+    
+    #Arrange
+
+    #Act
+
+    #Assert
   end
 
   describe "show" do
-    # Your tests go here
+    #Arrange
+
+    #Act
+
+    #Assert
   end
 
   describe "new" do
