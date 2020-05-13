@@ -1,3 +1,65 @@
 // Place all the styles related to the Drivers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.new-driver{
+  padding-top: 6rem;
+  padding-bottom: 1rem;
+  margin-left: 4rem;
+  margin-right: 4rem;
+  text-align: center;
+  color: black;
+}
+
+.driver-heading {
+  display: flex;
+  justify-content: space-between;
+  
+  align-items: center;
+  list-style: none;
+  font-size: 1.5em;
+}
+
+.buttons{
+  font-size: 1em;
+  text-align: center;
+}
+
+.new-driver-form{
+  text-align: center;
+ }
+
+ .driver-details{
+  text-align: center;
+  padding-left: 2em;
+}
+
+.show-driver{
+  text-align: center;
+  padding-top: 2em;
+}
+
+.show-header{
+  text-align: center;
+}
+
+.driver-heading {
+  display: flex;
+  justify-content: flex;
+  // align-items: center;
+  font-size: 1em;
+  padding-bottom: 1em;
+  padding-left: 1em;
+}
+
+.driver-heading li {
+  width: 40%;
+}
+
+.driver-info{
+  display: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+}
