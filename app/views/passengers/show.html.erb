@@ -1,27 +1,39 @@
-<main>
-<%# <header class="show-header"> %>
-<section class="show-header">
+<header class="show-passenger">
 <h2>Passenger: <%= @passenger.name %></h2>
+</header>
+
+<section class="passenger-details">
 <p>Phone Number: <%= @passenger.phone_num %></p>
 <p>Total Charges: $<%= @passenger.total_paid %></p>
-<p><%= link_to "Edit Passenger", edit_passenger_path %></p>
-<p><%= link_to "Delete Passenger", passenger_path(@passenger), method: :delete, data: {confirm: "Are you sure?"}%></p>
-<p><%= link_to "Add New Trip", passenger_trips_path(@passenger.id), method: :post %></p>
 </section>
 
-<body>
-  <ul class=passenger-heading>
-  <% @passenger.trips.each do |trip| %>
-  <li>Trip ID: <%= trip.id %></li>
-  <li>Trip Date: <%= trip.date %></li>
-  <li>Driver: <%= trip.driver.name %></li>
-  <li>Trip Rating: <%= trip.rating %></li>
-  <li>Trip Cost: $<%= trip.cost%></li>
+<section class="buttons">
+  <p><%= link_to "Edit Passenger", edit_passenger_path %></p>
+  <p><%= link_to "Delete Passenger", passenger_path(@passenger), method: :delete, data: {confirm: "Are you sure?"}%></p>
+  <%# <p><%= link_to "Add New Trip", passenger_trips_path(@passenger.id), method: :post %></p>
+</section>
 
-  <li><%= link_to "Edit Trip Rating", edit_trip_path(trip.id) %></li>
-  <li><%= link_to "Delete Trip", trip_path(trip.id), method: :delete, data: {confirm: "Are you sure?"}%></li>
+<section>
+  <table>
+    <tr>
+    <h2>Trips List</h2>
+      <th>Trip #</th>
+      <th>Date</th>
+      <th>Driver Name</th>
+      <th>Rating</th>
+      <th>Trip Cost $</th>
+    </tr>
+
+  <% @passenger.trips.each do |trip| %>
+  <tr>
+    <td><%= trip.id %></td>
+    <td><%= trip.date %></td>
+    <td> <%= trip.driver.name %></td>
+    <td><%= trip.rating %></td>
+    <td><%= trip.cost%></td>
+  </tr>
+  </table>
+    <li><%= link_to "Edit Trip Rating", edit_trip_path(trip.id) %></li>
+    <li><%= link_to "Delete Trip", trip_path(trip.id), method: :delete, data: {confirm: "Are you sure?"}%></li>
   <% end %>
-  </ul>
-  
-</body>
-</main>
+</section>

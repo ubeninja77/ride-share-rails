@@ -1,32 +1,48 @@
-<header class="show-header">
-<h2><%= @driver.name%></h2>
-<p>VIN: <%= @driver.vin %></p>
-<p>Availability status:
-  <% if @driver.available == 'true'%>
-    Available
-  <% else %>
-    Not available
-  <% end %>
-</p>
+<main>
+<header class="show-driver">
+<h2>Driver: <%= @driver.name%></h2>
+
+  <section class="driver-details">
+    <p>VIN: <%= @driver.vin %></p>
+    <p>Availability status:
+      <% if @driver.available == 'true'%>
+        Available
+      <% else %>
+        Not available
+      <% end %>
+    </p>
+  </section>
+
+  <section class="driver-info">
+    <p>Average Rating: <%= @driver.calculate_rating.nil? ? "No rating data": @driver.calculate_rating.round(1) %></p>
+    <p>Total Earnings: <%= @driver.total_earnings.nil? ? "0": number_to_currency(@driver.total_earnings) %></p>
+  </section>
 </header>
-<p><%= link_to "Edit Driver's Info", edit_driver_path(@driver) %></p>
-<p><%= link_to "Delete Driver", driver_path(@driver), method:  :delete, data: {confirm: "Are you sure you want to delete this driver?"} %></p>
-<h2>Trips List</h2>
-<table>
-<tr>
-  <th>Trip #</th>
-  <th>Date</th>
-  <th>Earnings</th>
-  <th>Rating</th>
-</tr>
-<% @driver.trips.each do |trip| %>
-<tr>
-  <td><%= link_to trip.id, trip_path(trip.id) %></td>
-  <td><%= link_to trip.date, trip_path(trip.id) %></td>
-  <td><%= number_to_currency(trip.cost.to_f/100) %></td>
-  <td><%= trip.rating %></td>
-<% end %>
-<table>
-</tr>
- <h2>Average Rating: <%= @driver.calculate_rating.nil? ? "No rating data": @driver.calculate_rating.round(1) %>
- <h2>Total Earnings: <%= @driver.total_earnings.nil? ? "0": number_to_currency(@driver.total_earnings) %>
+
+<section class="buttons">
+  <p><%= link_to "Edit Driver's Info", edit_driver_path(@driver) %></p>
+  <p><%= link_to "Delete Driver", driver_path(@driver), method:  :delete, data: {confirm: "Are you sure you want to delete this driver?"} %></p>
+</section>
+
+<section>
+  <table class=driver-heading>
+    <tr>
+      <h3>Trips List</h3>
+        <th>Trip #</th>
+        <th>Date</th>
+        <th>Earnings</th>
+        <th>Rating</th>
+    </tr>
+
+ 
+    <% @driver.trips.each do |trip| %>
+    <tr>
+      <td><%= link_to trip.id, trip_path(trip.id) %></td>
+      <td><%= link_to trip.date, trip_path(trip.id) %></td>
+      <td><%= number_to_currency(trip.cost.to_f/100) %></td>
+      <td><%= trip.rating %></td>
+    <% end %>
+    </tr>
+    </table>
+</section>  
+</main>

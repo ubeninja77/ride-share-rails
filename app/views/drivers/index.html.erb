@@ -1,8 +1,9 @@
 <%= link_to "Create new Driver Account", new_driver_path %>
 
+
 <h1>All drivers</h1>
 <% if @drivers.length > 0 %>
-  <ul>
+  <ul class= 'driver-index'>
     <% @drivers.each do |driver|  %>
       <li>
         <header><strong><%= link_to(driver.name, driver_path(driver.id) ) %></strong></header>
