@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.new-passenger-driver{
+.new-passenger{
   padding-top: 6rem;
   padding-bottom: 1rem;
   margin-left: 4rem;
@@ -11,14 +11,18 @@
   color: black;
 }
 
+.buttons{
+  font-size: 1em;
+  text-align: center;
+}
 
 .passenger-heading {
   display: flex;
-  justify-content: space-between;
-  
-  align-items: center;
-  list-style: none;
-  font-size: 1.5em;
+  justify-content: flex;
+  // align-items: center;
+  font-size: 1em;
+  padding-bottom: 1em;
+  padding-left: 1em;
 }
 
 .passenger-details {
@@ -29,3 +33,26 @@
 .new-passenger-form{
   text-align: center;
  }
+
+.show-passenger{
+  text-align: center;
+  padding-top: 2em;
+}
+
+.passenger-details{
+  text-align: center;
+  padding-left: 2em;
+}
+
+.passenger-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1em;
+  padding-bottom: 1em;
+}
+
+.passenger-heading li {
+  width: 40%;
+}
+
