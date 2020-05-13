@@ -6,6 +6,11 @@ describe DriversController do
     Driver.create name: "Test Smith", vin: "ADADEVELOPERSACAD",
     available: "true"
   }
+  before (:each) {
+    Trip.delete_all
+    Passenger.delete_all
+    Driver.delete_all
+  }
 
   describe "index" do
     it "responds with success when there are many drivers saved" do
